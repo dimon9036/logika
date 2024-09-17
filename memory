@@ -1,0 +1,24 @@
+from PyQt5.QtWidgets import QWidget, QApplication
+app = QApplication([])
+
+from layout_quizz import *
+
+window = QWidget()
+window.resize(600, 500)
+window.setWindowTitle("Memory Card")
+window.setLayout(main_line_quiz)
+window.show()
+
+def click_ok():
+    if btn_ok.text() == "Відповісти":
+        rbGroupBox.hide()
+        ansGroupBox.show()
+        btn_ok.setText("Наступне питання")
+    else:
+        rbGroupBox.show()
+        ansGroupBox.hide()
+        btn_ok.setText("Відповісти")
+
+btn_ok.clicked.connect(click_ok)
+
+app.exec()
